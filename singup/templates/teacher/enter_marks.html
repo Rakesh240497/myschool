@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="{% static 'css/addmarks.css' %}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Marks</title>
+</head>
+<body>
+    {% include 'HFfolder/theader.html' %}
+    <div class="container">
+    <h1>Enter Marks</h1>
+    <h2>Class: {{ selected_class }}</h2>
+
+    <form method="post" action="{% url 'enter_marks' selected_class %}">
+        {% csrf_token %}
+        {% include 'partials/messages.html' %}
+        <label for="{{ form.username.id_for_label }}">Username:</label>
+        <select id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}">
+            <option value="">---------</option>
+            {% for value, label in form.fields.username.choices %}
+                <option value="{{ value }}">{{ label }}</option>
+            {% endfor %}
+        </select>
+        
+        
+        <!-- {{ form.as_p }} -->
+        <label for="{{ form.exam_type.id_for_label }}">Exam Type:</label>
+        {{ form.exam_type }}
+
+        <label for="{{ form.maths.id_for_label }}">Maths:</label>
+        {{ form.maths }}
+
+        <label for="{{ form.science.id_for_label }}">Science:</label>
+        {{ form.science }}
+
+        <label for="{{ form.labs.id_for_label }}">Labs:</label>
+        {{ form.labs }}
+
+        <label for="{{ form.sports.id_for_label }}">Sports:</label>
+        {{ form.sports }}
+        <!-- fields = ['username', 'exam_type', 'maths', 'science', 'labs', 'sports'] -->
+
+        <input type="submit" value="Submit Marks">
+    </div>
+    </form>
+    {% include 'HFfolder/tfooter.html' %}
+
+</body>
+</html>

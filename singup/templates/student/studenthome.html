@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hi Student</title>
+    <style>
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 16px;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        /* Div Styles */
+        .container {
+            padding: 16px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 16px;
+            margin-left: 5em;
+            margin-top: 4em;
+            margin-right: 55em;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+    
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    {% csrf_token %}
+    {% include 'HFfolder/header.html' %}
+    <div class="container" style="padding-left:16px">
+        <form action="" method="post">
+            <table>
+                <tr>
+                  <td><label for="username">User Name:</label></td>
+                  <td><label>{{ details.username }}</label></td>
+                </tr>
+                <tr>
+                  <td><label for="Full Name">Full Name:</label></td>
+                  <td><p>{{ details.first_name }} {{ details.last_name }}</p></td>
+                </tr>
+                <tr>
+                  <td><label for="Email Id">Email ID:</label></td>
+                  <td><p>{{ details.email }}</p></td>
+                </tr>
+                <tr>
+                  <td><label for="dob">Date of Birth:</label></td>
+                  <td><p>{{ details.dateofbirth }}</p></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: right;">
+                        <a href="#" class="button">Click Here to Update Email Id</a>
+                    </td>
+                </tr>
+            </table>
+        </form>    
+    </div>   
+    {% include 'HFfolder/footer.html' %}
+</body>
+</html>

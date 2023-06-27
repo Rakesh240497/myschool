@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="{% static 'css/singup.css' %}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+</head>
+<body>
+    <!-- <div class="container">
+        <form action="" method="post">
+            {% csrf_token %}
+            {% include 'partials/messages.html' %}
+            <label for="username" name="username">Username: </label>
+            <input type="text" name="username" placeholder="Enter UserName">
+            <label for="password" name="password">Password: </label>
+            <input type="password" name="password" placeholder="Enter PassWord">
+            <input type="submit" value="Login" >
+        </form>    
+    </div>    -->
+    <div class="container">
+        <form action="{% url 'admin_login' %}" method="post">
+            {% csrf_token %}
+            {% include 'partials/messages.html' %}
+            <label for="username" name="username">Username: </label>
+            <input type="text" name="username" placeholder="Enter UserName">
+            <label for="password" name="password">Password: </label>
+            <input type="password" name="password" placeholder="Enter PassWord">
+            <input type="submit" value="Login">
+        </form>    
+    </div>
+    
+</body>
+</html>

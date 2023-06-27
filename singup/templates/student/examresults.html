@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="{% static 'css/examresults.css' %}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Results</title>
+</head>
+<body>
+    {% include 'HFfolder/header.html' %}
+    {% if results %}
+    <table>
+        <tr>
+            <th>Exam Type</th>
+            <th>Maths</th>
+            <th>Science</th>
+            <th>Labs</th>
+            <th>Sports</th>
+            <th>Percentage</th>
+            <th>Final Result</th>
+        </tr>
+        {% for item in results %}
+        <tr>
+            <td>{{ item.exam_type }}</td>
+            <td>{{ item.maths }}</td>
+            <td>{{ item.science }}</td>
+            <td>{{ item.labs }}</td>
+            <td>{{ item.sports }}</td>
+            <td>{{ item.percentage }}</td>
+            <td>{% if item.pf == 1 %}Pass{% else %}Fail{% endif %}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %} 
+    <p>Results not yet released</p>
+    {% endif %}
+    {% include 'HFfolder/footer.html' %}
+</body>
+</html>
